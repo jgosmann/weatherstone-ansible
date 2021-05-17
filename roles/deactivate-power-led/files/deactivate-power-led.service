@@ -1,0 +1,11 @@
+[Unit]
+Description=Deactivate the Raspberry Pi power LED
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo 0 > /sys/class/leds/led1/brightness'
+RemainAfterExit=true
+ExecStop=/bin/sh -c 'echo 255 > /sys/class/leds/led1/brightness'
+
+[Install]
+WantedBy=default.target

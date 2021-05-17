@@ -1,0 +1,16 @@
+---
+
+- name: Install systemd service
+  copy:
+    src: deactivate-power-led.service
+    dest: /etc/systemd/system/deactivate-power-led.service
+    owner: root
+    group: root
+    mode: "0644"
+    
+- name: Activate systemd service
+  systemd:
+    name: deactivate-power-led.service
+    daemon_reload: yes
+    enabled: yes
+    state: started
